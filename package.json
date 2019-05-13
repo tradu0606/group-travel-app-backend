@@ -1,0 +1,25 @@
+{
+  "name": "group-travel-app-backend",
+  "version": "1.0.0",
+  "description": "group travel app backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tradu0606/group-travel-app-backend.git"
+  },
+  "author": "Tetyana Radu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tradu0606/group-travel-app-backend/issues"
+  },
+  "homepage": "https://github.com/tradu0606/group-travel-app-backend#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "mongose": "0.0.2-security"
+  }
+}
