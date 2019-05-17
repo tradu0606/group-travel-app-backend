@@ -11,16 +11,33 @@ app.use(parser.json());
 app.use(cors());
 
 app.post('/favorites', (req, res) => {
-    User.findOne({ email: req.body.data.email }).then(user => {
+    console.log(req.body.data.email)
+    User.find({ email: req.body.data.email }).then(user => {
         console.log(user)
-        Favorites.create({ like: req.body.data.url }).then(fav => {
-        user.favorites.push(fav._id)
-        user.save()
-        console.log(user)
+        Favorites.create({ like: req.body.data.like }).then(fav => {
+            console.log(req.body.data.like)
+            user[0].favorites.push(fav._id)
+            user[0].save()
+            console.log(user)
         })
+        return res.send(200)
     }).catch(err => {
         console.log(err);
     })
+})
+
+app.get('/favorites', (req, res) => {
+    console.log(req.body)
+    let answer =[]
+    User.find({ email: req.body.email }).then(user => {
+        
+            Favorites.find({ _id: { $in:  user[0].favorites} }).then(elem =>{
+                console.log(elem)
+                return res.json(elem)
+            })
+    }).catch(err => {
+        console.log(err);
+    });
 })
 
 app.listen(app.get('port'), () => {
