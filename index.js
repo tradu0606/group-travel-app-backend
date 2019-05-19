@@ -40,6 +40,12 @@ app.get('/favorites', (req, res) => {
     });
 })
 
+app.delete("/favorites", (req, res) =>{
+    Favorites.findOneAndDelete({ like: req.body.like}).then(()=>{
+        return res.send(200)
+    }).catch(err => console.log(err))
+})
+
 app.listen(app.get('port'), () => {
     console.log('Server listening on port ' + app.get('port'));
 });
